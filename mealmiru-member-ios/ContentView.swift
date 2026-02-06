@@ -39,6 +39,8 @@ struct ContentView: View {
             Tab.init("Home", systemImage: "house.fill") {
                 NavigationStack{
                     VStack {
+                        Spacer()
+
                         Image("AppLogo") // Assets.xcassets の名前
                             .resizable()
                             .scaledToFit()
