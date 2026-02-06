@@ -38,8 +38,19 @@ struct ContentView: View {
         TabView{
             Tab.init("Home", systemImage: "house.fill") {
                 NavigationStack{
-                    List {
-                        
+                    VStack {
+                        Image("AppLogo") // Assets.xcassets の名前
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 180, height: 180)
+                            .shadow(radius: 8)
+
+                        Text("mealmiru")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .padding(.top, 12)
+
+                        Spacer()
                     }
                     .navigationTitle("Home")
                     .toolbar {
