@@ -13,6 +13,10 @@ struct ContentView: View {
     var body: some View {
         NaticeTabView()
     }
+    private var hasCheckedItem: Bool {
+        toEatItems.contains { $0.isChecked }
+    }
+
 
     @State private var toEatItems: [ToEatItem] = [
         ToEatItem(
@@ -124,20 +128,45 @@ struct ContentView: View {
                     .navigationTitle("To Eat")
                     .listStyle(.plain)
                     .safeAreaInset(edge: .bottom, alignment: .trailing) {
-                        Button {
-                            showAddToEatSheet = true
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 20, weight: .bold))
+                        if hasCheckedItem {
+                            // Ate ボタン（仮）
+                            Button {
+                                // TODO: Ate 機能は後回し
+                            } label: {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "fork.knife")
+                                    Text("Done")
+                                        .fontWeight(.semibold)
+                                }
                                 .foregroundStyle(.white)
-                                .frame(width: 60, height: 60)
-                                .background(Color.accentColor)
-                                .clipShape(Circle())
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 14)
+                                .frame(height: 60)
+                                .background(Color.blue)
+                                .clipShape(Capsule())
                                 .shadow(radius: 4)
+                            }
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 24)
+
+                        } else {
+                            // ＋ボタン（従来）
+                            Button {
+                                showAddToEatSheet = true
+                            } label: {
+                                Image(systemName: "plus")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundStyle(.white)
+                                    .frame(width: 60, height: 60)
+                                    .background(Color.accentColor)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 4)
+                            }
+                            .padding(.trailing, 20)
+                            .padding(.bottom, 24)
                         }
-                        .padding(.trailing, 20)
-                        .padding(.bottom, 24)
                     }
+
                     .sheet(isPresented: $showAddToEatSheet) {
                         AddToEatView(items: $toEatItems)
                     }
