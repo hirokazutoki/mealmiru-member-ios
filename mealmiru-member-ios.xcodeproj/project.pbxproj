@@ -7,17 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FDEEBCFF2F3E126E00BFE9FF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FDEEBCFE2F3E126E00BFE9FF /* GoogleSignIn */; };
-		FDEEBD012F3E126E00BFE9FF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FDEEBD002F3E126E00BFE9FF /* GoogleSignInSwift */; };
+		FDEEBE2B2F3F664F00BFE9FF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FDEEBE2A2F3F664F00BFE9FF /* GoogleSignIn */; };
+		FDEEBE2D2F3F664F00BFE9FF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FDEEBE2C2F3F664F00BFE9FF /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FDEEBCE92F34C97D00BFE9FF /* mealmiru-member-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mealmiru-member-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FDEEBE2F2F40AB9200BFE9FF /* Exceptions for "mealmiru-member-ios" folder in "mealmiru-member-ios" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FDEEBCE82F34C97D00BFE9FF /* mealmiru-member-ios */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FDEEBCEB2F34C97D00BFE9FF /* mealmiru-member-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FDEEBE2F2F40AB9200BFE9FF /* Exceptions for "mealmiru-member-ios" folder in "mealmiru-member-ios" target */,
+			);
 			path = "mealmiru-member-ios";
 			sourceTree = "<group>";
 		};
@@ -28,8 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDEEBCFF2F3E126E00BFE9FF /* GoogleSignIn in Frameworks */,
-				FDEEBD012F3E126E00BFE9FF /* GoogleSignInSwift in Frameworks */,
+				FDEEBE2B2F3F664F00BFE9FF /* GoogleSignIn in Frameworks */,
+				FDEEBE2D2F3F664F00BFE9FF /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +85,8 @@
 			);
 			name = "mealmiru-member-ios";
 			packageProductDependencies = (
-				FDEEBCFE2F3E126E00BFE9FF /* GoogleSignIn */,
-				FDEEBD002F3E126E00BFE9FF /* GoogleSignInSwift */,
+				FDEEBE2A2F3F664F00BFE9FF /* GoogleSignIn */,
+				FDEEBE2C2F3F664F00BFE9FF /* GoogleSignInSwift */,
 			);
 			productName = "mealmiru-member-ios";
 			productReference = FDEEBCE92F34C97D00BFE9FF /* mealmiru-member-ios.app */;
@@ -104,7 +117,7 @@
 			mainGroup = FDEEBCE02F34C97D00BFE9FF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				FDEEBCFD2F3E126E00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				FDEEBE292F3F664F00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FDEEBCEA2F34C97D00BFE9FF /* Products */;
@@ -268,6 +281,7 @@
 				DEVELOPMENT_TEAM = UGBN4V8HHY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mealmiru-member-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -300,6 +314,7 @@
 				DEVELOPMENT_TEAM = UGBN4V8HHY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mealmiru-member-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -346,7 +361,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FDEEBCFD2F3E126E00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+		FDEEBE292F3F664F00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
@@ -357,14 +372,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FDEEBCFE2F3E126E00BFE9FF /* GoogleSignIn */ = {
+		FDEEBE2A2F3F664F00BFE9FF /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FDEEBCFD2F3E126E00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			package = FDEEBE292F3F664F00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
 		};
-		FDEEBD002F3E126E00BFE9FF /* GoogleSignInSwift */ = {
+		FDEEBE2C2F3F664F00BFE9FF /* GoogleSignInSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FDEEBCFD2F3E126E00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			package = FDEEBE292F3F664F00BFE9FF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
