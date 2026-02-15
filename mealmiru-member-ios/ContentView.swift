@@ -118,13 +118,17 @@ struct ContentView: View {
                         }
                         
                         ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                // プロフィール画面へ
+                            Menu {
+                                Button(role: .destructive) {
+                                    signOut()
+                                } label: {
+                                    Label("Sign out", systemImage: "arrow.backward.square")
+                                }
                             } label: {
                                 Image(systemName: "gearshape.fill")
                                     .frame(width: 32, height: 32)
                             }
-                            .navigationTitle("Group Setting")
+                            .navigationTitle("User Setting")
                         }
                     }
                 }
@@ -321,6 +325,17 @@ struct ContentView: View {
                 print(String(data: data, encoding: .utf8) ?? "")
             }
         }.resume()
+    }
+    
+    func signOut() {
+        // Google からサインアウト
+        GIDSignIn.sharedInstance.signOut()
+
+        // API トークンも削除
+        UserDefaults.standard.removeObject(forKey: "api_token")
+
+        // ログイン状態を解除
+        self.user = nil
     }
 
     
