@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddToEatView: View {
+    @EnvironmentObject private var session: AppSession
     @Environment(\.dismiss) private var dismiss
     @Binding var items: [ToEatItem]
 
@@ -58,13 +59,22 @@ struct AddToEatView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         guard !text.isEmpty else { return }
-                        items.append(
-                            ToEatItem(
+
+                        
+                        Task {
+                            await session.createToEat(
                                 name: text,
                                 expDate: hasExpDate ? expDate : nil
                             )
-                        )
-                        dismiss()
+                            
+                            items.append(
+                                ToEatItem(
+                                    name: text,
+                                    expDate: hasExpDate ? expDate : nil
+                                )
+                            )
+                            dismiss()
+                        }
                     } label: {
                         Image(systemName: "checkmark")
                     }

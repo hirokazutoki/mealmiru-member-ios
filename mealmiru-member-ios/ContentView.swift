@@ -13,25 +13,25 @@ import SwiftUI
 
 struct LoginResponse: Decodable {
     let token: String
-    let user: UserResponse
+    let group: GroupResponse
 }
 
-struct UserResponse: Decodable {
+struct GroupResponse: Decodable {
     let id: Int
-    let email: String?
     let name: String
 }
 
 struct ContentView: View {
     
+    @StateObject private var session = AppSession()
     @State private var user: GIDGoogleUser?
 
     @available(iOS 26.0, *)
     var body: some View {
         VStack {
           // Check if the user is signed in.
-            if user != nil {
-              NaticeTabView()
+            if session.isLoggedIn {
+              NaticeTabView().environmentObject(session)
           } else {
               // If not signed in, show the "Sign in with Google" button.
               Spacer()
@@ -120,6 +120,7 @@ struct ContentView: View {
                         ToolbarItem(placement: .topBarTrailing) {
                             Menu {
                                 Button(role: .destructive) {
+                                    // TODO: ログアウトできるようにする
                                     signOut()
                                 } label: {
                                     Label("Sign out", systemImage: "arrow.backward.square")
@@ -220,6 +221,7 @@ struct ContentView: View {
 
                     .sheet(isPresented: $showAddToEatSheet) {
                         AddToEatView(items: $toEatItems)
+                            .environmentObject(session)
                     }
                 }
             }
@@ -315,14 +317,17 @@ struct ContentView: View {
 
             do {
                 let decoded = try JSONDecoder().decode(LoginResponse.self, from: data)
-                print("Sanctum Token:", decoded.token)
+                
+                DispatchQueue.main.async {
+                    self.session.apiToken = decoded.token
+                    self.session.activeGroupId = decoded.group.id
 
-                // 🔐 本来は Keychain に保存
-                UserDefaults.standard.set(decoded.token, forKey: "api_token")
+                    UserDefaults.standard.set(decoded.token, forKey: "api_token")
+                    UserDefaults.standard.set(decoded.group.id, forKey: "group_id")
+                }
 
             } catch {
                 print("Decode error:", error)
-                print(String(data: data, encoding: .utf8) ?? "")
             }
         }.resume()
     }
